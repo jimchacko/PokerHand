@@ -1,0 +1,6 @@
+C:\Jim\Test\ICM Consulting\PokerHand\PokerHand\bin\Debug\PokerHand.exe.config
+C:\Jim\Test\ICM Consulting\PokerHand\PokerHand\bin\Debug\PokerHand.exe
+C:\Jim\Test\ICM Consulting\PokerHand\PokerHand\bin\Debug\PokerHand.pdb
+C:\Jim\Test\ICM Consulting\PokerHand\PokerHand\obj\Debug\PokerHand.csprojAssemblyReference.cache
+C:\Jim\Test\ICM Consulting\PokerHand\PokerHand\obj\Debug\PokerHand.exe
+C:\Jim\Test\ICM Consulting\PokerHand\PokerHand\obj\Debug\PokerHand.pdb
