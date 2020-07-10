@@ -30,8 +30,8 @@ namespace PokerHand
             }
             try
             {
-               // System.IO.StreamReader file = new System.IO.StreamReader(args[0]);
-                System.IO.StreamReader file = new System.IO.StreamReader(@"C:\Jim\Test\ICM Consulting\poker-hands.txt");
+               System.IO.StreamReader file = new System.IO.StreamReader(args[0]);
+              //  System.IO.StreamReader file = new System.IO.StreamReader(@"C:\Jim\Test\ICM Consulting\poker-hands.txt");
                 while ((line = file.ReadLine()) != null)
                 {
                     string inputline = line;
@@ -65,12 +65,10 @@ namespace PokerHand
                         }
                         else if (result == 2)
                         {
-
                             secondPlayerCounter++;
                         }
                         continue;
                     }
-
 
                     //Rank 9: Four of a kind
                     result = CheckStraightFlush(firsthand, secondHand);
@@ -78,10 +76,8 @@ namespace PokerHand
                     {
                         Console.WriteLine(inputline + "  (Rank 9) Winner : " + result);
                         if (result == 1)
-                        {
-
                             firstPlayerCounter++;
-                        }
+
                         else if (result == 2)
                             secondPlayerCounter++;
                         continue;
@@ -93,10 +89,7 @@ namespace PokerHand
                     {
                         Console.WriteLine(inputline + "  (Rank 8) Winner : " + result);
                         if (result == 1)
-                        {
-
                             firstPlayerCounter++;
-                        }
                         else if (result == 2)
                             secondPlayerCounter++;
                         continue;
@@ -145,13 +138,9 @@ namespace PokerHand
                     {
                         Console.WriteLine(inputline + "  (Rank 4) Winner : " + result);
                         if (result == 1)
-                        {
                             firstPlayerCounter++;
-                        }
                         else if (result == 2)
-                        {
                             secondPlayerCounter++;
-                        }
                         continue;
                     }
 
@@ -190,13 +179,9 @@ namespace PokerHand
                         {
                             Console.WriteLine(inputline + "  (Rank 1) Winner : " + result);
                             if (result == 1)
-                            {
                                 firstPlayerCounter++;
-                            }
                             else if (result == 2)
-                            {
                                 secondPlayerCounter++;
-                            }
                             continue;
                         }
                     }
@@ -217,8 +202,45 @@ namespace PokerHand
 
             Console.WriteLine("Hello world");
         }
+        #region Rank 10
 
+        /// <summary>
+        /// Check if ther is Royal Flush
+        ///  Rank 10
+        /// </summary>
+        /// <param name="player1cards"></param>
+        /// <param name="player2cards"></param>
+        /// <returns></returns>
+        private static int CheckRoyalFlush(string player1cards, string player2cards)
+        {
+            bool player1HasVal = false;
+            bool player2HasVal = false;
+            if ((player1cards[1] == player1cards[3]) && (player1cards[5] == player1cards[7]) && (player1cards[1] == player1cards[5]) && (player1cards[1] == player1cards[9]) && (player1cards.Contains("T") && player1cards.Contains("J") && player1cards.Contains("Q") && player1cards.Contains("K") && player1cards.Contains("A")))
+            {
+                player1HasVal = true;
+            }
+            if ((player2cards[1] == player2cards[3]) && (player2cards[5] == player2cards[7]) && (player2cards[1] == player2cards[5]) && (player2cards[1] == player2cards[9]) && (player2cards.Contains("T") && player2cards.Contains("J") && player2cards.Contains("Q") && player2cards.Contains("K") && player2cards.Contains("A")))
+            {
+                player2HasVal = true;
+            }
+            if (player1HasVal)
+            {
+                Console.WriteLine("Royal Flush for Player 1"); return 1;
+            }
+            if (player2HasVal)
+            {
+                Console.WriteLine("Royal Flush for Player 2"); return 2;
+            }
+            return 0;
+        }
+        #endregion Rank 10
         #region Rank 9
+        /// <summary>
+        /// All five cards in consecutive value order with same suit
+        /// </summary>
+        /// <param name="player1cards"></param>
+        /// <param name="player2cards"></param>
+        /// <returns></returns>
         private static int CheckStraightFlush(string player1cards, string player2cards)
         {
             bool firshandConsecutive = ConsecutiveValues(player1cards);
@@ -233,13 +255,18 @@ namespace PokerHand
                 if ((!firshandConsecutive || checkFirstPlayer.Trim().Length == 0)) return 2;
                 return CheckHighCard(player1cards, player2cards);
             }
-
             return 0;
 
         }
         #endregion Rank 9
 
         #region Rank  8
+        /// <summary>
+        /// Four cards of same value
+        /// </summary>
+        /// <param name="player1cards"></param>
+        /// <param name="player2cards"></param>
+        /// <returns></returns>
         private static int CheckfourofaKind(string player1cards, string player2cards)
         {
             string checkFirstPlayer = selectThePair(player1cards, 4);
@@ -270,7 +297,7 @@ namespace PokerHand
         #region Rank  7
         /// <summary>
         /// Full house 
-        /// Three of a kind and a Piar
+        /// Three of a kind and a Pair
         /// </summary>
         /// <param name="player1cards"></param>
         /// <param name="player2cards"></param>
@@ -328,6 +355,12 @@ namespace PokerHand
         #endregion 7
 
         #region Rank  6
+        /// <summary>
+        /// All five card in same suit
+        /// </summary>
+        /// <param name="player1cards"></param>
+        /// <param name="player2cards"></param>
+        /// <returns></returns>
         private static int CheckForFlush6(string player1cards, string player2cards)
         {
             string checkFirstPlayer = CardofSameSuit(player1cards, 5);
@@ -346,6 +379,12 @@ namespace PokerHand
             }
             return 0;
         }
+        /// <summary>
+        /// Card of Same suit
+        /// </summary>
+        /// <param name="playerInputcards"></param>
+        /// <param name="count"></param>
+        /// <returns></returns>
         private static string CardofSameSuit(string playerInputcards, int count)
         {
             string checkThHand = "";
@@ -384,6 +423,12 @@ namespace PokerHand
             return 0;
         }
 
+
+        /// <summary>
+        /// Is consecutive value
+        /// </summary>
+        /// <param name="playerInputcards"></param>
+        /// <returns></returns>
         private static bool ConsecutiveValues(string playerInputcards)
         {
             int[] firstcardArrray = new int[5];
@@ -445,7 +490,7 @@ namespace PokerHand
                 {
                     return 2;
                 }
-              
+
 
             }
             return 0;
@@ -561,9 +606,9 @@ namespace PokerHand
                     return 2;
                 }
 
-            }               
+            }
 
-                return 0;
+            return 0;
         }
 
         #endregion Region 2
@@ -621,7 +666,7 @@ namespace PokerHand
             result = CheckaChar(player1cards, player2cards, "2");
             if (result > 0)
                 return result;
-            
+
             return result;
         }
         /// <summary>
@@ -648,39 +693,7 @@ namespace PokerHand
         }
         #endregion Rank 1
 
-        #region Rank 10
 
-        /// <summary>
-        /// Check if ther is Royal Flush
-        ///  Rank 10
-        /// </summary>
-        /// <param name="player1cards"></param>
-        /// <param name="player2cards"></param>
-        /// <returns></returns>
-        private static int CheckRoyalFlush(string player1cards, string player2cards)
-        {
-            bool player1HasVal = false;
-            bool player2HasVal = false;
-            if ((player1cards[1] == player1cards[3]) && (player1cards[5] == player1cards[7]) && (player1cards[1] == player1cards[5]) && (player1cards[1] == player1cards[9]) && (player1cards.Contains("T") && player1cards.Contains("J") && player1cards.Contains("Q") && player1cards.Contains("K") && player1cards.Contains("A")))
-            {
-                player1HasVal = true;
-            }
-            if ((player2cards[1] == player2cards[3]) && (player2cards[5] == player2cards[7]) && (player2cards[1] == player2cards[5]) && (player2cards[1] == player2cards[9]) && (player2cards.Contains("T") && player2cards.Contains("J") && player2cards.Contains("Q") && player2cards.Contains("K") && player2cards.Contains("A")))
-            {
-                player2HasVal = true;
-            }
-            if (player1HasVal)
-            {
-                Console.WriteLine("Royal Flush for Player 1");
-                return 1;
-            }
-            if (player2HasVal)
-            {
-                Console.WriteLine("Royal Flush for Player 2"); return 2;
-            }
-            return 0;
-        }
-        #endregion Rank 10
     }
 
 
