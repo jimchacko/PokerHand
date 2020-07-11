@@ -30,8 +30,8 @@ namespace PokerHand
             }
             try
             {
-               System.IO.StreamReader file = new System.IO.StreamReader(args[0]);
-              //  System.IO.StreamReader file = new System.IO.StreamReader(@"C:\Jim\Test\ICM Consulting\poker-hands.txt");
+                System.IO.StreamReader file = new System.IO.StreamReader(args[0]);
+                //  System.IO.StreamReader file = new System.IO.StreamReader(@"C:\Jim\Test\ICM Consulting\poker-hands.txt");
                 while ((line = file.ReadLine()) != null)
                 {
                     string inputline = line;
@@ -193,6 +193,7 @@ namespace PokerHand
                 Console.WriteLine("********** Player 1: " + firstPlayerCounter);
                 Console.WriteLine("********** Player 2: " + secondPlayerCounter);
                 Console.WriteLine("**********************************");
+                Console.WriteLine("*Please press any key to exit*");
                 Console.ReadKey();
             }
             catch (Exception ex)
@@ -200,7 +201,6 @@ namespace PokerHand
                 Console.WriteLine("Error " + ex);
             }
 
-            Console.WriteLine("Hello world");
         }
         #region Rank 10
 
