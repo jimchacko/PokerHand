@@ -4,9 +4,9 @@ C:\Jim\Test\ICM Consulting\PokerHand\PokerHand\bin\Debug\PokerHand.pdb
 C:\Jim\Test\ICM Consulting\PokerHand\PokerHand\obj\Debug\PokerHand.csprojAssemblyReference.cache
 C:\Jim\Test\ICM Consulting\PokerHand\PokerHand\obj\Debug\PokerHand.exe
 C:\Jim\Test\ICM Consulting\PokerHand\PokerHand\obj\Debug\PokerHand.pdb
-C:\GitHub\Source\PokerHand\PokerHand\PokerHand\bin\Debug\PokerHand.exe.config
-C:\GitHub\Source\PokerHand\PokerHand\PokerHand\bin\Debug\PokerHand.exe
-C:\GitHub\Source\PokerHand\PokerHand\PokerHand\bin\Debug\PokerHand.pdb
 C:\GitHub\Source\PokerHand\PokerHand\PokerHand\obj\Debug\PokerHand.csprojAssemblyReference.cache
-C:\GitHub\Source\PokerHand\PokerHand\PokerHand\obj\Debug\PokerHand.exe
-C:\GitHub\Source\PokerHand\PokerHand\PokerHand\obj\Debug\PokerHand.pdb
+C:\GitHub\Source\PokerHand\PokerHand\PokerHand\bin\Debug\PokerHandSorter.exe.config
+C:\GitHub\Source\PokerHand\PokerHand\PokerHand\bin\Debug\PokerHandSorter.exe
+C:\GitHub\Source\PokerHand\PokerHand\PokerHand\bin\Debug\PokerHandSorter.pdb
+C:\GitHub\Source\PokerHand\PokerHand\PokerHand\obj\Debug\PokerHandSorter.exe
+C:\GitHub\Source\PokerHand\PokerHand\PokerHand\obj\Debug\PokerHandSorter.pdb

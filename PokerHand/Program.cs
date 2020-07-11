@@ -1,9 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+/// <summary>
+/// Date : 11 July 2020
+/// @Author: Jim Chacko
+/// </summary>
 namespace PokerHand
 {
     class Program
@@ -26,12 +26,10 @@ namespace PokerHand
                 Console.WriteLine();
                 Console.WriteLine("program poker-hands.txt");
                 Console.ReadKey();
-                // return;
             }
             try
             {
                 System.IO.StreamReader file = new System.IO.StreamReader(args[0]);
-                //  System.IO.StreamReader file = new System.IO.StreamReader(@"C:\Jim\Test\ICM Consulting\poker-hands.txt");
                 while ((line = file.ReadLine()) != null)
                 {
                     string inputline = line;
@@ -60,13 +58,9 @@ namespace PokerHand
                     {
                         Console.WriteLine(inputline + "  (Rank 10) Winner : " + result);
                         if (result == 1)
-                        {
                             firstPlayerCounter++;
-                        }
                         else if (result == 2)
-                        {
                             secondPlayerCounter++;
-                        }
                         continue;
                     }
 
@@ -118,7 +112,6 @@ namespace PokerHand
                         continue;
                     }
 
-
                     //Rank 5 : Straight
                     result = CheckStraight(firsthand, secondHand);
                     if (result > 0)
@@ -130,7 +123,6 @@ namespace PokerHand
                             secondPlayerCounter++;
                         continue;
                     }
-
 
                     //Rank4 : three Pair
                     result = CheckThreePairRank4(firsthand, secondHand);
@@ -157,8 +149,6 @@ namespace PokerHand
                         continue;
                     }
 
-
-
                     //Rank 2 : Pair
                     result = CheckPairCard(firsthand, secondHand);
                     if (result > 0)
@@ -172,7 +162,6 @@ namespace PokerHand
                     }
 
                     //Rank 1  : High Card
-
                     result = CheckHighCard(firsthand, secondHand);
                     {
                         if (result > 0)
@@ -185,7 +174,6 @@ namespace PokerHand
                             continue;
                         }
                     }
-
 
                     Console.WriteLine(" Not expected to run ");
                 }
@@ -234,6 +222,7 @@ namespace PokerHand
             return 0;
         }
         #endregion Rank 10
+
         #region Rank 9
         /// <summary>
         /// All five cards in consecutive value order with same suit
@@ -418,7 +407,6 @@ namespace PokerHand
 
                 // both are conscutive
                 return CheckHighCard(firsthand, secondHand);
-
             }
             return 0;
         }
@@ -468,29 +456,19 @@ namespace PokerHand
             string checkFirstPlayer = selectThePair(player1cards, 3);
             string checkSecondPlayer = selectThePair(player2cards, 3);
 
-
-
             if (checkFirstPlayer.Trim().Length == 1 || checkSecondPlayer.Trim().Length == 1)
             {
                 if (checkSecondPlayer.Trim().Length != 1)
-                {
                     return 1;
-                }
-                if (checkFirstPlayer.Trim().Length != 1)
-                {
-                    return 2;
-                }
 
+                if (checkFirstPlayer.Trim().Length != 1)
+                    return 2;
 
                 if (cardValue.IndexOf(checkFirstPlayer[0]) > cardValue.IndexOf(checkSecondPlayer[0]))
-                {
                     return 1;
-                }
-                if (cardValue.IndexOf(checkSecondPlayer[0]) > cardValue.IndexOf(checkFirstPlayer[0]))
-                {
-                    return 2;
-                }
 
+                if (cardValue.IndexOf(checkSecondPlayer[0]) > cardValue.IndexOf(checkFirstPlayer[0]))
+                    return 2;
 
             }
             return 0;
@@ -510,41 +488,27 @@ namespace PokerHand
         private static int CheckTwoPairRank3(string player1cards, string player2cards)
         {
 
-
-
             string checkFirstPlayer = selectThePair(player1cards, 2);
             string checkSecondPlayer = selectThePair(player2cards, 2);
-
-
 
             if (checkFirstPlayer.Trim().Length == 2 || checkSecondPlayer.Trim().Length == 2)
             {
                 if (checkSecondPlayer.Trim().Length != 2)
-                {
                     return 1;
-                }
+
                 if (checkFirstPlayer.Trim().Length != 2)
-                {
                     return 2;
-                }
-
-
                 if (cardValue.IndexOf(checkFirstPlayer[0]) > cardValue.IndexOf(checkSecondPlayer[0]))
-                {
                     return 1;
-                }
+
                 if (cardValue.IndexOf(checkSecondPlayer[0]) > cardValue.IndexOf(checkFirstPlayer[0]))
-                {
                     return 2;
-                }
+
                 if (cardValue.IndexOf(checkFirstPlayer[1]) > cardValue.IndexOf(checkSecondPlayer[1]))
-                {
                     return 1;
-                }
+
                 if (cardValue.IndexOf(checkSecondPlayer[1]) > cardValue.IndexOf(checkFirstPlayer[1]))
-                {
                     return 2;
-                }
 
             }
             return 0;
@@ -569,7 +533,6 @@ namespace PokerHand
             if (playerInputcards.Count(f => f == '2') == count) checkThHand += "2";
 
             return checkThHand;
-
         }
 
         #endregion Rank 3
@@ -590,24 +553,14 @@ namespace PokerHand
             if (checkFirstPlayer.Trim().Length != 0 || checkSecondPlayer.Trim().Length != 0)
             {
                 if (checkSecondPlayer.Trim().Length == 0)
-                {
                     return 1;
-                }
                 if (checkFirstPlayer.Trim().Length == 0)
-                {
                     return 2;
-                }
                 if (cardValue.IndexOf(checkFirstPlayer[0]) > cardValue.IndexOf(checkSecondPlayer[0]))
-                {
                     return 1;
-                }
                 if (cardValue.IndexOf(checkSecondPlayer[0]) > cardValue.IndexOf(checkFirstPlayer[0]))
-                {
                     return 2;
-                }
-
             }
-
             return 0;
         }
 
@@ -692,10 +645,5 @@ namespace PokerHand
             return 0;
         }
         #endregion Rank 1
-
-
     }
-
-
-
 }
