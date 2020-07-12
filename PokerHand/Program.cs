@@ -21,11 +21,12 @@ namespace PokerHand
             {
                 Console.WriteLine("********** ERROR **** ");
                 Console.WriteLine("The file name is not  provided ");
-
                 Console.WriteLine("Please run  in following format  ");
                 Console.WriteLine();
                 Console.WriteLine("program poker-hands.txt");
+                Console.WriteLine("**********  **** ");
                 Console.ReadKey();
+                return;
             }
             try
             {
@@ -203,21 +204,27 @@ namespace PokerHand
         {
             bool player1HasVal = false;
             bool player2HasVal = false;
-            if ((player1cards[1] == player1cards[3]) && (player1cards[5] == player1cards[7]) && (player1cards[1] == player1cards[5]) && (player1cards[1] == player1cards[9]) && (player1cards.Contains("T") && player1cards.Contains("J") && player1cards.Contains("Q") && player1cards.Contains("K") && player1cards.Contains("A")))
+            string firstpalyercardSuit = CardofSameSuit(player1cards, 5);
+            string secondpalyercardSuit = CardofSameSuit(player2cards, 5);
+            if (firstpalyercardSuit.Trim().Length == 1 && (player1cards.Contains("T") && player1cards.Contains("J") && player1cards.Contains("Q") && player1cards.Contains("K") && player1cards.Contains("A")))
             {
                 player1HasVal = true;
             }
-            if ((player2cards[1] == player2cards[3]) && (player2cards[5] == player2cards[7]) && (player2cards[1] == player2cards[5]) && (player2cards[1] == player2cards[9]) && (player2cards.Contains("T") && player2cards.Contains("J") && player2cards.Contains("Q") && player2cards.Contains("K") && player2cards.Contains("A")))
+            if (secondpalyercardSuit.Trim().Length == 1 && (player2cards.Contains("T") && player2cards.Contains("J") && player2cards.Contains("Q") && player2cards.Contains("K") && player2cards.Contains("A")))
             {
                 player2HasVal = true;
             }
-            if (player1HasVal)
+            if (player1HasVal || player2HasVal)
             {
-                Console.WriteLine("Royal Flush for Player 1"); return 1;
-            }
-            if (player2HasVal)
-            {
-                Console.WriteLine("Royal Flush for Player 2"); return 2;
+                if (!player2HasVal)
+                {
+                    Console.WriteLine("Royal Flush for Player 1"); return 1;
+                }
+
+                if (!player1HasVal)
+                {
+                    Console.WriteLine("Royal Flush for Player 2"); return 2;
+                }
             }
             return 0;
         }
@@ -426,12 +433,11 @@ namespace PokerHand
                 firstcardArrray[counter] = cardValue.IndexOf(playerInputcards[i]);
                 counter++;
             }
-            Array.Sort(firstcardArrray);
+            Array.Sort(firstcardArrray); // sort the array
 
             bool isconsevitve = true;
             for (int i = 0; i < firstcardArrray.Length - 1; i++)
             {
-
                 if (firstcardArrray[i] != firstcardArrray[i + 1])
                 {
                     isconsevitve = false;
