@@ -3,7 +3,7 @@ Test Code For Poker Hand sorting
 
 This program is written in  c #
  To run the program, download the solution. 
- Go to Pokerhand folder .  
+ Go to PokerHand folder .  
 There will be a exe file named  Program.exe
 
  Run a command prompt to the folder  (eg:  C:\GitHub\Source\PokerHand\PokerHand\PokerHand )
