@@ -74,3 +74,5 @@ _[Ss]cripts
 *.dot[Cc]over
 *.lock
 *.ide-shm
+*.ide-wal
+.vs
